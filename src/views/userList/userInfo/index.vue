@@ -90,16 +90,7 @@
         </div>
       </el-drawer>
     </div>
-    <el-table
-      :data="
-        userList.filter(
-          (data) =>
-            !search ||
-            data.user_name.toLowerCase().includes(search.toLowerCase())
-        )
-      "
-      style="width: 100%"
-    >
+    <el-table :data="userList.filter((data) => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
       <el-table-column label="客户编号">
         <template slot-scope="scope">
           {{ scope.row.user_id }}

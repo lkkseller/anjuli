@@ -38,12 +38,27 @@ export const constantRoutes = [
   {
     path: '/houseList',
     component: Layout,
+    name: 'HouseList',
+    meta: { title: '租房管理', icon: 'form' },
     children: [
       {
-        path: 'index',
-        name: 'HouseList',
-        component: () => import('@/views/houseList/index'),
-        meta: { title: '租房管理', icon: 'form' }
+        path: 'houseAdd',
+        name: 'HouseAdd',
+        component: () => import('@/views/houseList/houseAdd/index'),
+        meta: { title: '房源上传', icon: 'el-icon-tickets' },
+        hidden: true
+      },
+      {
+        path: 'houseInfo',
+        name: 'HouseInfo',
+        component: () => import('@/views/houseList/houseInfo/index'),
+        meta: { title: '房源信息管理', icon: 'el-icon-school' }
+      },
+      {
+        path: 'houseCheck',
+        name: 'HouseCheck',
+        component: () => import('@/views/houseList/houseCheck/index'),
+        meta: { title: '房源审核', icon: 'el-icon-school' }
       }
     ]
   },
@@ -59,7 +74,7 @@ export const constantRoutes = [
         path: 'userInfo',
         name: 'UserInfo',
         component: () => import('@/views/userList/userInfo/index'),
-        meta: { title: '用户信息管理', icon: 'el-icon-tickets' }
+        meta: { title: '用户信息管理', icon: 'el-icon-tickets' },
       },
       {
         path: 'userPower',
@@ -88,6 +103,13 @@ export const constantRoutes = [
         name: 'ReceiptCollect',
         component: () => import('@/views/collectList/receiptCollect/index'),
         meta: { title: '收款单管理', icon: 'el-icon-bank-card' }
+      },
+      {
+        path: 'billDetails',
+        name: 'BillDetails',
+        component: () => import('@/views/collectList/billCollect/billDetails/index'),
+        meta: { title: '收款单管理', icon: 'el-icon-bank-card' },
+        hidden: true
       }
     ]
   },
