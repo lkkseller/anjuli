@@ -5,18 +5,22 @@
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
-          {{user.account}}
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img src="../../assets/avatar.jpg" class="user-avatar">
+          <img src="../../assets/avatar.jpg" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item> 个人中心 </el-dropdown-item>
           </router-link>
+          <el-dropdown-item>
+            <el-badge :value="3" class="item">
+              <i class="el-icon-bell" style="font-size: 20px"><span style="font-size:10px">消息</span></i>
+            </el-badge>
+          </el-dropdown-item>
           <a
             target="_blank"
             href="https://github.com/PanJiaChen/vue-admin-template/"
@@ -44,20 +48,20 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
 import { removeUser } from "@/utils/session";
 import { resetRouter } from "@/router";
-import { getUser } from '@/utils/session'
+import { getUser } from "@/utils/session";
 
 export default {
-  data(){
-    return{
-      user: null
-    }
+  data() {
+    return {
+      user: null,
+    };
   },
   components: {
     Breadcrumb,
     Hamburger,
   },
   created() {
-    this.user = getUser
+    this.user = getUser;
   },
   computed: {
     ...mapGetters(["sidebar"]),
@@ -150,6 +154,8 @@ export default {
           right: -20px;
           top: 25px;
           font-size: 12px;
+        }
+        .dbad {
         }
       }
     }

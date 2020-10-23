@@ -3,7 +3,6 @@
     <el-page-header @back="goBack" content="房源添加页面"> </el-page-header>
     <hr />
     <el-form :model="form">
-      <div class="left-form">
         <el-form-item label="房子编号" :label-width="formLabelWidth">
           <el-input v-model="form.index" autocomplete="off"></el-input>
         </el-form-item>
@@ -44,24 +43,6 @@
             </el-date-picker>
           </div>
         </el-form-item>
-      </div>
-      <div class="right-form">
-        <el-form-item label="房子描述" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="房子描述" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="房子描述" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="房子描述" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="房子描述" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
-        </el-form-item>
-      </div>
     </el-form>
     <div class="div-footer">
     <el-button @click="addCancel" style="width:140px">取 消</el-button>
