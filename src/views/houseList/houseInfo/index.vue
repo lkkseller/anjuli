@@ -3,9 +3,11 @@
     <div>
       租房管理
       <hr />
-      <el-button class="addbtn" @click="dialogFormVisible = true"
+      <router-link :to="{path: 'houseAdd'}">
+      <el-button class="addbtn"
         >+房源上传</el-button
       >
+      </router-link>
     </div>
     <el-table
       v-loading="listLoading"
@@ -84,54 +86,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog title="添加租房" :visible.sync="dialogFormVisible">
-      <el-form :model="form">
-        <el-form-item label="房子编号" :label-width="formLabelWidth">
-          <el-input v-model="form.index" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="房子描述" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="租房价格" :label-width="formLabelWidth">
-          <el-input v-model="form.price" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="租房类型" :label-width="formLabelWidth">
-          <el-select v-model="form.type" placeholder="请选择租房类型">
-            <el-option label="经济房" value="经济房"></el-option>
-            <el-option label="学区房" value="学区房"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="租房地址" :label-width="formLabelWidth">
-          <div class="block">
-            <el-cascader
-              v-model="form.address"
-              :options="options"
-            ></el-cascader>
-          </div>
-        </el-form-item>
-        <el-form-item label="租房状态" :label-width="formLabelWidth">
-          <el-select v-model="form.status" placeholder="请选择租房状态">
-            <el-option label="出租中" value="出租中"></el-option>
-            <el-option label="闲置" value="闲置"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="上传时间" :label-width="formLabelWidth">
-          <div class="block">
-            <el-date-picker
-              v-model="form.display_time"
-              type="datetime"
-              value-format="yyyy-MM-dd HH:mm:ss"
-              placeholder="请选择时间"
-            >
-            </el-date-picker>
-          </div>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submit">确 定</el-button>
-      </div>
-    </el-dialog>
+    
     <el-drawer
       title="我是标题"
       :visible.sync="drawer"
@@ -212,9 +167,8 @@ export default {
     return {
       houseList: [], //存放表格数据
       listLoading: false,
-      dialogFormVisible: false,
-      drawer: false,
       formLabelWidth: "120px",
+      drawer: false,
       form: {
         index: "",
         title: "",
@@ -282,22 +236,6 @@ export default {
     }
   },
   methods: {
-    submit() {
-      var that = this;
-      that.dialogFormVisible = false;
-      if(that.form.address){
-        that.form.address = that.form.address.join("/")
-      }
-      that.houseList.push(that.form);
-      window.localStorage.setItem("houseList", JSON.stringify(that.houseList));
-      let temp = window.localStorage.getItem("houseList");
-      // console.info(temp);
-      // console.info(that.list);
-      that.$message({
-        message: "添加成功！",
-        type: "success", 
-      });
-    },
     editHouseInfo(index, row) {
       var that = this;
       that.drawer = true;
