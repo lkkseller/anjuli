@@ -96,7 +96,7 @@ export const constantRoutes = [
         path: 'billCollect',
         name: 'BillCollecy',
         component: () => import('@/views/collectList/billCollect/index'),
-        meta: { title: '账单管理', icon: 'el-icon-wallet' }
+        meta: { title: '账单管理', icon: 'el-icon-wallet' },
       },
       {
         path: 'receiptCollect',
@@ -108,7 +108,12 @@ export const constantRoutes = [
         path: 'billDetails',
         name: 'BillDetails',
         component: () => import('@/views/collectList/billCollect/billDetails/index'),
-        meta: { title: '收款单管理', icon: 'el-icon-bank-card' },
+        hidden: true
+      },
+      {
+        path: 'billAdd',
+        name: 'BillAdd',
+        component: () => import('@/views/collectList/billCollect/billAdd/index'),
         hidden: true
       }
     ]

@@ -66,23 +66,10 @@
           <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="110" align="center">
+      <el-table-column label="操作" width="130" align="center">
         <template slot-scope="scope">
-          <div class="ediv">
-            <el-button
-              class="editbtn"
-              @click="editHouseInfo(scope.$index, scope.row)"
-            >
-              <i class="el-icon-edit-outline" /> </el-button
-            >|
-          </div>
-          <div>
-            <el-button
-              class="delbtn"
-              @click="delHouseInfo(scope.$index, scope.row)"
-              ><i class="el-icon-delete"
-            /></el-button>
-          </div>
+          <el-button type="primary" icon="el-icon-edit" circle @click="editHouseInfo(scope.$index, scope.row)"></el-button>
+          <el-button type="danger" icon="el-icon-delete" circle @click="delHouseInfo(scope.$index, scope.row)"></el-button>
         </template>
       </el-table-column>
     </el-table>

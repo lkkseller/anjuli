@@ -1,5 +1,7 @@
 <template>
   <div>
+    <el-page-header @back="goBack" content="房源添加页面"> </el-page-header>
+    <hr />
     <el-form :model="form">
       <div class="left-form">
         <el-form-item label="房子编号" :label-width="formLabelWidth">
@@ -159,6 +161,11 @@ export default {
     },
     addCancel() {
       console.info("点击取消");
+    },
+    goBack() {
+      this.$router.push({
+        path: "houseInfo",
+      });
     },
   },
 };

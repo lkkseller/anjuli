@@ -1,7 +1,6 @@
 <template>
   <div>
     <el-page-header @back="goBack" content="订单详情页面"> </el-page-header>
-    
   </div>
 </template>
 
@@ -18,7 +17,6 @@ export default {
         path: "billCollect",
       });
     },
-    
   },
 };
 </script>
