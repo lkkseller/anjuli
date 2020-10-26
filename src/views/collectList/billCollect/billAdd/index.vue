@@ -106,7 +106,7 @@ export default {
   data() {
     var validateTel = (rule, value, callback) => {
       setTimeout(() => {
-        if(!(/^1[3456789]d{9}$/.test(value))){
+        if(!(/^1[3456789]\d{9}$/.test(value))){
             callback(new Error("手机号码格式输入不正确!"))
         }else{
             callback();

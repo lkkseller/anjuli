@@ -71,6 +71,13 @@ export const constantRoutes = [
     meta: { title: '用户管理', icon: 'el-icon-s-help' },
     children: [
       {
+        path: 'userAdd',
+        name: 'UserAdd',
+        component: () => import('@/views/userList/userAdd/index'),
+        meta: { title: '添加用户', icon: 'el-icon-tickets' },
+        hidden: true
+      },
+      {
         path: 'userInfo',
         name: 'UserInfo',
         component: () => import('@/views/userList/userInfo/index'),

@@ -1,94 +1,13 @@
 <template>
   <div>
     <div>
+      <router-link :to="{path: 'userAdd'}">
       <el-button
-        @click="drawer = true"
         type="primary"
         style="margin-left: 6px; margin-top: 18px; background-color: #00bfff"
         >十</el-button
       >
-      <el-drawer
-        title="我是标题"
-        :visible.sync="drawer"
-        direction="ltr"
-        :with-header="false"
-        size="60%"
-      >
-        <div class="app-head">
-          <i class="el-icon-s-custom" style="width: 200px; height: 100px"
-            >添加用户信息</i
-          >
-        </div>
-        <div class="app-container">
-          <el-form ref="form" :model="form" label-width="120px" class="addForm">
-            <el-form-item label="客户编号">
-              <el-input v-model="form.user_id" />
-            </el-form-item>
-            <el-form-item label="真实姓名">
-              <el-input v-model="form.user_name" />
-            </el-form-item>
-            <el-form-item label="手机号" prop="user_phone">
-              <el-input v-model="form.user_phone" />
-            </el-form-item>
-            <el-form-item label="角色">
-              <el-select v-model="form.user_play" placeholder="请选择角色">
-                <el-option label="房东" value="房东" />
-                <el-option label="租客" value="租客" />
-              </el-select>
-            </el-form-item>
-            <el-form-item label="租房状态">
-              <el-select
-                v-model="form.user_status"
-                placeholder="请选择租房状态"
-              >
-                <el-option label="租用中" value="租用中"></el-option>
-                <el-option label="已退租" value="已退租"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="租房类型">
-              <el-select v-model="form.user_type" placeholder="请选择租房类型">
-                <el-option label="单身公寓" value="单身公寓"></el-option>
-                <el-option label="学区房" value="学区房"></el-option>
-                <el-option label="海景房" value="海景房"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="居住地址">
-              <div class="block">
-                <el-cascader
-                  v-model="form.user_address"
-                  :options="options"
-                ></el-cascader>
-              </div>
-            </el-form-item>
-            <el-form-item label="入住时间">
-              <div class="block">
-                <el-date-picker
-                  v-model="form.user_Sdate"
-                  type="datetime"
-                  value-format="yyyy-MM-dd HH:mm:ss"
-                  placeholder="请选择时间"
-                >
-                </el-date-picker>
-              </div>
-            </el-form-item>
-            <el-form-item label="退房时间">
-              <div class="block">
-                <el-date-picker
-                  v-model="form.user_Edate"
-                  type="datetime"
-                  value-format="yyyy-MM-dd HH:mm:ss"
-                  placeholder="请选择时间"
-                >
-                </el-date-picker>
-              </div>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="onSubmit">确认</el-button>
-              <el-button @click="drawer = false">取消</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-      </el-drawer>
+      </router-link>
     </div>
     <el-table :data="userList.filter((data) => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
       <el-table-column label="客户编号">
@@ -192,8 +111,8 @@
           </el-form-item>
           <el-form-item label="角色">
             <el-select v-model="form.user_play" placeholder="请选择角色">
-              <el-option label="房东" value="房东" />
-              <el-option label="租客" value="租客" />
+              <el-option label="业主" value="业主" />
+              <el-option label="普通用户" value="普通用户" />
             </el-select>
           </el-form-item>
           <el-form-item label="租房状态">

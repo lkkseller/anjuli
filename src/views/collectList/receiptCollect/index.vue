@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div id="myChart" :style="{ width: '700px', height: '500px' }"></div>
+    <div id="myHouse" :style="{ width: '100%', height: '400px' }"></div>
+    <div id="myChart" :style="{ width: '100%', height: '500px' }"></div>
   </div>
 </template>
 
@@ -11,38 +12,105 @@ export default {
   },
   mounted() {
     this.drawLine();
+    this.drawCircle();
   },
   methods: {
+    drawCircle() {
+      let myHouse = this.$echarts.init(document.getElementById("myHouse"));
+    //   function fetchData(cb) {
+    //     // 通过 setTimeout 模拟异步加载
+    //     setTimeout(function () {
+    //       cb({
+    //         categories: ["全部房源", "停用房源", "已租房源", "未租房源"],
+    //         data: [5, 20, 36, 10],
+    //       });
+    //     }, 1000);
+    //   }
+      myHouse.setOption({
+         title: {
+        text: '房源状态统计',
+        subtext: '虚构数据',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        // orient: 'vertical',
+        // top: 'middle',
+        bottom: 10,
+        left: 'center',
+        data: ['全部房源', '未租房源', '已租房源', '停用房源']
+    },
+    series: [
+        {
+            type: 'pie',
+            radius: '65%',
+            center: ['50%', '50%'],
+            selectedMode: 'single',
+            data: [
+                {
+                    value: 1548,
+                    name: '全部房源',
+                },
+                {value: 535, name: '停用房源'},
+                {value: 510, name: '已租房源'},
+                {value: 634, name: '未租房源'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+      });
+    //   fetchData(function (data) {
+    //     myChart.setOption({
+    //       xAxis: {
+    //         data: data.categories,
+    //       },
+    //       series: [
+    //         {
+    //           // 根据名字对应到相应的系列
+    //           name: "销量",
+    //           data: data.data,
+    //         },
+    //       ],
+    //     });
+    //   });
+    },
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("myChart"));
       // 绘制图表
-      // function fetchData(cb) {
-      //   // 通过 setTimeout 模拟异步加载
-      //   setTimeout(function () {
-      //     cb({
-      //       categories: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-      //       data: [5, 20, 36, 10, 10, 20],
-      //     });
-      //   }, 1000);
-      // }
+      
       myChart.setOption({
-        
         title: {
-          text: "基本信息",
+          text: "房态图",
           subtext: "虚假数据",
         },
         tooltip: {
           trigger: "axis",
         },
-        color: ["rgba(31,13,230,0.95)", "#ff475d", "#49ef18", "#efeb23"],
+        // color: ["rgba(31,13,230,0.95)", "#ff475d", "#49ef18", "#efeb23"],
+        emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
         legend: [
           {
-            data: ["学历层次", "职业技能"],
+            data: ["全部房源", "未租房源"],
           },
           {
             top: 20,
-            data: ["业绩成果", "专业经历"],
+            data: ["已租房源", "停用房源"],
           },
         ],
         toolbox: {
@@ -105,7 +173,7 @@ export default {
         ],
         series: [
           {
-            name: "学历层次",
+            name: "全部房源",
             type: "bar",
             stack: "个人信息",
             data: [
@@ -133,7 +201,7 @@ export default {
             },
           },
           {
-            name: "职业技能",
+            name: "停用房源",
             type: "bar",
             stack: "个人信息",
             data: [
@@ -161,7 +229,7 @@ export default {
             },
           },
           {
-            name: "业绩成果",
+            name: "已租房源",
             type: "bar",
             stack: "个人信息",
             data: [
@@ -189,7 +257,7 @@ export default {
             },
           },
           {
-            name: "专业经历",
+            name: "未租房源",
             type: "bar",
             stack: "个人信息",
             data: [
@@ -218,20 +286,7 @@ export default {
           },
         ],
       });
-      // fetchData(function (data) {
-      //   myChart.setOption({
-      //     xAxis: {
-      //       data: data.categories,
-      //     },
-      //     series: [
-      //       {
-      //         // 根据名字对应到相应的系列
-      //         name: "销量",
-      //         data: data.data,
-      //       },
-      //     ],
-      //   });
-      // });
+      
     },
   },
 };

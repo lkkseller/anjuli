@@ -98,8 +98,10 @@
           </el-form-item>
           <el-form-item label="租房类型">
             <el-select v-model="form.type" placeholder="请选择租房类型">
-              <el-option label="经济房" value="经济房" />
-              <el-option label="学区房" value="学区房" />
+              <el-option label="出租房" value="出租房" />
+              <el-option label="商铺" value="商铺" />
+              <el-option label="写字楼" value="写字楼" />
+              <el-option label="二手房" value="二手房" />
             </el-select>
           </el-form-item>
           <el-form-item label="房子地址">
